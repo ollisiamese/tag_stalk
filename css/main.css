@@ -1,0 +1,562 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: transparent;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images, videos, audio and canvas and the bottom of
+ * their containers: h5bp.com/i/440
+ */
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Browse Happy prompt
+   ========================================================================== */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.myTagsTable td.rightTd{text-align:right}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*GENERAL STYLES*/
+
+/*general*/
+body {background-color:rgb(28,28,29);padding-bottom:50px}
+h3,h4 {color:rgb(231,222,225)}
+div.#appContainer {overflow:hidden}
+#oneTrend h3,#appViewHome h3,div#notFound {text-align:center}
+input#submitTag,input#submitTag2,.loginBtn,.regBtn,.submitBtn{background-color:rgb(217,214,215)}
+input#submitTag:hover,input#submitTag2:hover,.loginBtn:hover,.regBtn:hover,.submitBtn:hover,
+input#submitTag:focus,input#submitTag2:focus,.loginBtn:focus,.regBtn:focus,.submitBtn:focus{background-color:rgb(245,244,249)}
+.hidden {visibility:hidden}
+a,a:active,a:focus,button, button:active,button:focus{outline:none;border-style:none;text-decoration:none}
+.panel-body{text-overflow:clip;overflow:hidden}
+#bottom img{margin-left:47%}
+
+/*nav*/
+
+#brandImg{height:50px;width:auto;position:relative;top:-15px}
+a.navbar-brand{overflow:hidden;height:50px}
+nav.navbar-default,ul.dropdown-menu {background-color:rgb(48,48,49);border:1px rgb(40,40,41)}
+.navbar-nav>li>a {
+padding-top: 12px;
+padding-bottom: 12px;margin-top:3px;
+}
+.navbar-right a {background-color:rgb(231,222,225);color:#777}
+.navbar-right li{margin:0 5px 0 5px}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+color: #fff;
+background-color: rgb(155,147,150);
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+color: #fff;
+background-color: rgb(155,147,150);
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+border-color: rgb(40,40,41);
+border-top:none;border-bottom:none;box-shadow:none;
+}
+
+
+
+/*Form to track a tag - 1, visible on MD and LG */
+#spanTrackTag {color:#fff;padding-bottom:5px;}
+form#trackTagForm{padding-left:6px;overflow:hidden}
+.navbarTrackForm {display:inline}
+#navSearchLink{padding-right:0px}
+#navSearchLink:hover{font-weight:500;color:inherit}
+label.error {padding-left:5px;}
+
+
+/*Form to track a tag - 2, visible on SM and XS */
+#trackTagForm2 {text-align:center;}
+#trackTagForm2 span {color:#fff}
+#trackInput2{margin:5px 0 5px 5px;width:93%}
+
+
+/*     */
+#LoadingMsg,#notFound{color:rgb(200,200,200)}
+#LoadingMsg {text-align:center;font-size:xx-large;}
+p#about{background-color:rgb(231,222,225);padding-bottom:5px;}
+
+
+
+/*color of the buttons, e.g. my tags screen*/
+.btn-rose{background-color:rgb(135,63,87);color:rgb(250,245,247)}
+.btn-rose:hover,.btn-rose:focus,.btn-rose:active{background-color:rgb(108,63,87);color:rgb(250,223,247)}
+#buttons{text-align:center;}
+
+
+/*forms*/
+#mainLoginForm{text-align:center}
+#loginForm{margin-top:5px}
+#loginFormDiv h3,#registerFormDiv h3,#forgotFormDiv  h3{}
+#loginForm label,#mainLoginForm span,#registerForm label,#forgotFormDiv {color:rgb(221,221,221)}
+
+#loginForm input[type="submit"]{margin-bottom:15px}
+label.error,#loginForm label.error,#registerForm label.error,#forgotFormDiv label.error,#loginForm label.errorMsg {color:#FA9775}
+#noUsernameMsg,#noPasswordMsg{color:#FA9775}
+
+/*refresh+toTop buttons on side of the screen*/
+.refresh,.toTop{color:rgb(48,48,49);width:40px;height:40px;z-index:99999;background-color:rgba(231,222,225,0.5)}
+.refresh:hover,.refresh:focus,.toTop:hover,.toTop:focus{background-color:rgba(231,222,225,1);color:rgb(28,28,29)}
+.refresh span,.toTop span {color:rgba(25,25,25);position:relative;top:5px}
+.refresh:active, .toTop:active {background-color:rgba(231,214,225,1)}
+
+
+/*photo post*/
+ul.manyPicPost {list-style-type:none}
+.manyPicPost img{max-width:100%}
+/*text,link- type post*/
+.panel-body {background-color:#f9f9f9}
+.panel-header{background-color:rgb(231,222,225)}
+.panel-footer{background-color:rgb(155,147,150);}
+.panel-footer p{margin-bottom:0}
+#link-body a{font-weight:bold}
+.panel-header,.panel-footer{padding-left:5px}
+.linkPost .panel-footer a{color:#f9f9f9}
+.audioPost img,
+.textPost img,.textPost video-thumbnail,.textPost iframe,
+.linkPost  img,.linkPost video-thumbnail,.linkPost iframe,
+.quotePost img,.quotePost video-thumbnail,.quotePost iframe,
+.answerPost img,.answerPost video-thumbnail,.answerPost iframe{width:80%;height:80%}
+
+
+
+/*Chat type of post - table styles*/
+.table-striped{background-color:rgb(28,28,29);}
+.chatTitle{color:rgb(249,249,253);font-size:larger;font-weight:bold}
+.tdLabel{font-weight:bold}
+.table-striped>tbody:nth-child(odd)>tr>td:nth-of-type(1){
+background-color:rgb(231,222,225); /*#f9f9f9;*/
+}
+.table-striped>tbody:nth-child(even)>tr>td:nth-of-type(1){
+background-color:rgb(155,147,150); /*#f9f9f9;*/
+}
+.table-striped>tbody>tr>td{margin-bottom:2px}
+
+
+/*Audio type post*/
+/*.audioSub{background-color:rgba(155,147,150,0.7);}*/
+
+div#player {overflow:hidden}
+
+.videoPost{overflow:hidden}
+/*post info header*/
+.blogName{color:rgb(135,63,87)}
+a.blogNameLink:hover,a.blogNameLink:focus{text-decoration:underline;color:rgb(135,63,87)}
+
+
+
+/*Tags list -tags after posts*/
+div.tagsDiv {clear:both}
+ul#tagList{margin-left:5%;}
+ul#tagList li button{margin-bottom:5px;}
+#tagList li {display:inline}
+.tagsPills {padding:2px;}
+#TagsHeader,.postHeader,.audioPost *{color:rgb(248,245,246)}
+
+
+/*My Tags screen*/
+#tagsMsg{color:#fff}
+#myTagsTable span{color:rgb(231,222,225)}
+#myTagsTable td{padding:10px}
+.smaller{font-size:smaller}
+
+/*footer*/ 
+footer{color:#fff;text-align:center;font-size:x-small;margin-top:340px;}
+ 
+ 
+
+li.postsListItem{margin-top:20px;overflow:hidden}
+
+
+p.descriptionP{overflow:hidden;height:auto}
+
+
+div#direct *{display:block}
+
+
+
+
+/* ==========================================================================
+    Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+@media (max-width:320px){/*iPhone4*/
+#appContainer{width:auto;overflow:hidden}/*prevent horizontal scroll*/
+.dropdown-menu li {display:block;float:none}
+.nav>li>a{padding:1px 1px}
+.tagsPills{font-size:smaller;}
+ul#tagList {overflow:hidden;margin-left:1%;}
+.refresh {position:fixed;left:82%;top:50%}
+.toTop{left:82%;top:70%}
+
+.audioplayer {max-width:300px;overflow:hidden}
+/*.audioPost iframe{width:30%;height:15%;margin:6px;background-color: rgb(245,244,249);}*/
+.audioSub{width:240px;height:auto;}
+.audioSub *{width:210px;height:auto;}
+
+blockquote{font-size:smaller;overflow:hidden}
+}
+
+@media  (max-width: 767px) { /*XS*/
+#appContainer{width:auto;overflow:hidden}/*prevent horizontal scroll*/
+.nav>li>a{padding:5px 5px}
+#navFourthLink,#navFifthLink{display:block;float:none}
+ #myTagsDiv,#loginFormDiv,#registerFormDiv {margin-left:12%}
+ #forgotFormDiv{margin-left:8%}
+ /*li.postsListItem a img{width:100%}*/
+ 
+ div.navbar-left{font-size:smaller;width:auto;}
+
+ ul.navbar-nav li{margin-top:15px;float:left}
+div.videoDiv iframe{width:100%;}
+.videoDiv{overflow:hidden}
+
+ /*div.videoDiv iframe{width:90%;}  /*WORKS!*/
+ 
+ 
+ 
+ .audioPost iframe{width:40%;height:auto;max-height:80px;margin:6px;background-color: rgb(245,244,249);overflow:hidden;}
+ .spotify_audio_player {max-height:80px;background-color:transparent}
+ 
+ .smallerWhenSmall {font-size:small}
+
+ div.navbar-left {padding-bottom:5px}
+
+ .refresh{position:fixed;left:87%;top:50%}
+ .toTop{position:fixed;left:87%;top:70%}
+ div#subMenu a,p#about{text-align:center}
+ .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover, .navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+color: #fff;
+background-color: rgb(155,147,150);
+
+}
+}
+
+
+@media  (min-width: 768px) {/*SM*/
+  #appContainer{width:auto;overflow:hidden}/*prevent horizontal scroll*/
+  /*li.postsListItem a img{width:100%}*/
+  #loginFormDiv,#registerFormDiv {margin-left:35%}
+  #myTagsDiv{margin-left:25%}
+  #forgotFormDiv{margin-left:15%}
+  
+  
+  .audioPost iframe{width:60%;height:auto;max-height:80px;margin:6px;background-color: rgb(245,244,249);overflow:hidden;}
+  .spotify_audio_player {max-height:80px;background-color:transparent}
+  
+  
+  
+  .smallerWhenSmall {font-size:initial}
+ p#about{width:90%;margin-left:4%}
+ 
+ div.navbar-left {padding-bottom:5px}
+ .refresh{position:fixed;left:87%;top:40%}
+ .toTop{position:fixed;left:87%;top:60%}
+  
+}
+
+
+
+
+@media  (min-width: 992px) {/*MD*/
+ #myTagsDiv,#loginFormDiv,#registerFormDiv {margin-left:38%}
+ #forgotFormDiv{margin-left:25%}
+/* li.postsListItem a img{width:100%}*/
+.audioPost iframe{width:80%;height:80%;margin:6px}
+  .refresh{position:fixed;left:90%;top:55%}
+ .toTop{position:fixed;left:90%;top:75%}
+}
+
+
+
+@media  (min-width: 1200px) {/*LG*/
+   #myTagsDiv,#loginFormDiv ,#registerFormDiv{margin-left:40%}  
+   /*li.postsListItem a img{width:100%}*/
+ 
+  .audioPost iframe{width:90%;height:90%;margin:6px}
+   
+   .refresh{position:fixed;left:90%;top:55%}
+   .toTop{position:fixed;left:90%;top:75%}
+   
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+

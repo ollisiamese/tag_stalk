@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TagStalk</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+         <link rel="icon" href="favicon.ico" type="image/x-icon">
+		 
+		 
+        <link rel="stylesheet" href="css/normalize-min.css">
+		<link rel="stylesheet" href="js/vendor/bootstrap-3.1.1-dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/main-min.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+		<script type='text/javascript' src='js/knockout-3.0.0.debug-min.js'></script>
+		<script src="js/vendor/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+		<!--jQuery validation plugin-->
+		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+		<script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.min.js"></script>
+		
+		
+		<script src="//cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
+		
+		<script src="js/formsValidator.js"></script>
+		
+		<script src="js/viewModel.js"></script>
+		
+		<script src="js/history.js"></script>
+        <script src="js/Post.js"></script>
+		
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!---------------------------HEADER/NAV-------------------------------------------------------------------------------------->
+		<div id='appContainer' ><!--BOUND WITH HISTORY.JS-->
+	
+		<div class="container-fuid">
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		
+		 <div class="navbar-header"> <!--the toggle button and the brand-->
+		   
+		       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#subMenu">
+		         <span class="sr-only">Toggle navigation</span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>
+                 <span class="icon-bar"></span>		   
+		       </button>
+		   
+		       <span id="brand">
+		         <a class="navbar-brand " href="#" data-bind="click:goHome"><img id="brandImg" src="img/logo4dark.png"  alt=""/></a>	
+		       </span>
+		  
+		                    <!--search form number 1 - visible on SM,MD,LG-->
+		       <form id="trackTagForm" class="navbar-form navbar-left navbarTrackForm visible-sm visible-md visible-lg"  role="search">
+                    <div class="form-group">
+                     <span id="spanTrackTag">Track a Hashtag:&nbsp;#&nbsp;</span>		  
+		             <input type="text" id="trackInput" class="form-control" name="trackInput" placeholder="e.g.: 'roses'"/>        
+                     <input id="submitTag" type='submit' class="btn" value='GO!'/>		
+		            </div>
+               </form>
+		 </div>
+		 
+ 
+		  <div class="collapse navbar-collapse navbar-right" id="subMenu">
+		        <ul class="nav navbar-nav nav-pills">
+		              <li ><a id='navFirstLink' class="" href='#' data-bind="click:goHome">About</a></li>			 
+			          </li>
+		             <!-- ko ifnot: yesSession --><li><a  id='navSecondLink' href='#' data-bind="click:goLoginMain">Log In/Create an Account</a></li><!-- /ko -->
+		             <!-- ko if: yesSession --><li class="dropdown"><a class="dropdown toggle" data-toggle="dropdown" id='navThirdLink' href='#' >Hello,<span data-bind="text:userName"></span><b class="caret"></b></a>
+			         <ul class="dropdown-menu">
+				        <li class="subMenu2"><!-- ko if: yesSession --><a id='navFifthLink'  href='#'data-bind='click:stopSession'>Log Out</a><!-- /ko --></li>
+		                <li class="subMenu2"><!-- ko if: yesSession --><a id='navFourthLink' href='#'data-bind='click:goMyHashtags'>My Hashtags</a><!-- /ko --></li>
+		             </ul>
+			                                   </li><!-- /ko -->
+			 
+		         </ul>
+          </div>
+		</div>
+	</nav>
+		
+		                  <!--search form number 2 - visible on XS-->
+		       <form id="trackTagForm2" class="navbar-form navbar-left navbarTrackForm  visible-xs"  role="search">
+                    <div class="form-group">
+                     <span id="spanTrackTag2">Track a Hashtag:&nbsp;#&nbsp;</span>		  
+		             <input type="text" id="trackInput2" class="form-control" name="trackInput2" placeholder="e.g.: 'roses'"/>        
+                     <input id="submitTag2" type='submit' class="btn" value='GO!'/>		
+		            </div>
+                </form>
+		</div>
+		   <!-------------------------end of navbars and search forms---------------------------------------------------------->
+		
+		
+		
+		
+		
+		
+		
+		<div class="container">
+	
+		<div id='appViews' class="row">
+		
+		
+		  <!--HOME SCREEN-->
+	     <div id='appViewHome' data-bind="if:homeScreen" class="row">
+		 
+		     <div class="container">
+		         <h3 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">About TagStalk</h3>
+		      
+    			  <div class="container">
+		               <p id="about" class="col-lg-8 col-md-8  well well-sm">
+		                 <img src="img/logo5.png" alt=""/><br/><br/>  &nbsp; <strong><em>TagStalk</em> is an app that lets you track hashtags on Tumblr (no Tumblr account required). <br/><br/>
+                                        &nbsp;&nbsp;Currently, on Tumblr, you can permanently follow only other people's blogs.
+                                         While you can search specific topics via hashtags, you cannot save them to the list of your favorites
+										 and follow hashtags continuously. TagStalk offers you a convenient, standalone solution for that! <br/><br/>
+                                         &nbsp;&nbsp;You can simply look up a hashtag once, or create an account and permanently track your favorite subjects. <br/><br/>
+		                                 &nbsp;&nbsp;Type in your hashtag in the search form at the top of the screen to get started! </strong>
+		               <br/>
+					   <br/>
+					   </p>
+		          </div>
+		     </div>
+		 
+        </div>
+		
+		<!--ONE TREND SCREEN-->
+		<div id='oneTrend' data-bind="if:oneTrendScreen" class="col-lg-12 col-md-12 col-sm-11 col-xs-12">
+		
+		
+		
+		    <!--general section with 'Loading' msg, 'Track trend' buttons, 'No matching posts found' msg-->
+		   <div class="row">
+		       <h3 class="col-lg-9 col-md-9 col-sm-11 col-xs-11 ">Results for #<span data-bind="text:selectedTag"></span>:</h3>
+		      
+			   <div class="col-lg-3 col-md-3 col-sm-11 col-xs-11" id="buttons">
+		     <!-- ko ifnot: tagStatus --><button data-bind="click:$root.trackTag" class="btn btn-rose">Track This Permanently</button><!-- /ko -->
+		     <!-- ko if: tagStatus --><button data-bind="click:stopTracking" class="btn btn-rose" >Stop tracking <span data-bind="text:selectedTag"></span></button><!-- /ko -->		 
+		       </div>
+		 
+		   </div>
+		 
+		
+	
+		   <!--<div id="LoadingMsg" class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-bind="ifnot:postsLoading">Loading...<img src="img/ajax-loader3.gif"/></div>-->
+		   <div id="notFound" data-bind="if:noPostsFound" class="col-lg-9 col-md-9 col-sm-11 col-xs-11">No posts matching this tag were found...</div>
+		   <br/>
+		   <br/>
+		   
+		   
+		   
+		  <div class="container">
+		  
+		   <!--REFRESH AND TO TOP-->
+		     <a class="sidebar refresh btn"  data-bind="click:reloadScreen" title="refresh feed"><span class="glyphicon glyphicon-refresh"></span></a>
+		     <a class="sidebar toTop btn" title="to top" ><span class="glyphicon glyphicon-chevron-up"></span></a>
+		 
+		 
+		   <!--list of retrieved posts-->
+		  <ul id="postsList" data-bind="foreach:posts" class="list list-unstyled ">
+		   <li class="postsListItem row">
+		    
+			<div class="col-lg-8 col-md-8 col-sm-10 col-xs-11">
+			    <div class="row">
+		          <span class="col-lg-8 col-md-8 col-sm-8 col-xs-8 smallerWhenSmall postHeader" >Posted by &nbsp;<a data-bind="attr:{href:post_url}" class="blogNameLink" target="new"><span data-bind="text:blog_name" class="blogName" ></span></a></span>
+			      <span class="col-lg-4 col-md-4 col-sm-4 col-xs-4 smallerWhenSmall postHeader">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  data-bind="text:note_count"></span>&nbsp; notes</span><br/>
+		           
+			    </div>
+			</div>
+			
+			
+			<!--If PHOTO-->
+			<div data-bind="if:isPhoto" class="col-lg-8 col-md-8 col-sm-10 col-xs-11" >
+			  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+			     <span data-bind="html:caption"></span>
+				 
+			          <!--if one photo only-->
+			           <div data-bind="ifnot:isManyPics" >
+			               <a data-bind="attr:{href:post_url}" target="new" class="thumbnail" ><img data-bind="attr:{src:photos[0].alt_sizes[0].url}" alt="" /></a>			   
+			           </div>
+			   
+			          <!--if several photos-->
+			           <div data-bind="if:isManyPics">
+			             <ul class="manyPicPost list-unstyled" data-bind="foreach:photos">
+			               <li><a data-bind="attr:{href:$parent.post_url}" target="new"><img data-bind="attr:{src:$data.alt_sizes[0].url}" class="thumbnail" alt=""/></a></li>
+			             </ul>
+			           </div>
+			  
+			 </div>
+			 
+			</div>
+			
+			
+		    <!--IF VIDEO-->
+			 <div data-bind="if:isVideo"  class="col-lg-8 col-md-8 col-sm-11 col-xs-11 videoPost">
+			    
+			        <div data-bind="html:videos" class="videoDiv"></div>
+			   
+			 </div> 
+			  
+			  
+			  
+			 <!--IF LINK-->
+			 <div data-bind="if:isLink" class="col-lg-8 col-md-8 col-sm-10 col-xs-11">
+			   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 linkPost">
+			   
+			    <div class="panel panel-default ">
+			       <div class="panel-body" id="link-body">
+			         <a data-bind="attr:{href:url}" ><br/>
+			         <span data-bind="text:linkTitle"></span>
+				     </a>
+				   </div>
+				   <div class="panel-footer">
+			         <p class="descriptionP" data-bind="html:description"></p>
+			       </div>
+			   </div>
+			   
+			   </div>
+			   
+			 </div>
+			 
+			 
+			 
+			 <!--IF TEXT-->
+			 <div data-bind="if:isText" class="col-lg-8 col-md-8 col-sm-10 col-xs-11 textPost">
+			   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+			      <div class="panel panel-default">
+                     <div class="panel-header">
+				     <span data-bind="text:title"></span><br/>
+				     </div>
+				    
+					<div class="panel-body">
+			         <span data-bind="html:body" ></span>
+			        </div> 
+				  </div>
+				</div>
+			 </div>
+			 
+			 
+			 
+			 <!--IF QUOTE-->
+			 <div data-bind="if:isQuote" class="col-lg-8 col-md-8 col-sm-10 col-xs-11 quotePost">
+			   
+			   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+			   
+			   
+			    <div class="panel panel-default ">
+			      <div class="panel-body" >
+				   <span>&quot;</span><span data-bind="html:text"></span><span>&quot;</span>
+                  </div>
+				  
+				  <div class="panel-footer" data-bind="html:source">
+				   
+				  </div>
+			    </div>
+			  
+			  </div>
+			  
+			 </div>
+			 
+			 <!--IF CHAT-->
+			 <div data-bind="if:isChat" class="col-lg-8 col-md-8 col-sm-10 col-xs-11">
+			   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+			   <span data-bind="text:title" class="chatTitle"></span><br/>
+			   
+			   <table data-bind="foreach:dialogue"  class="chatTable table table-bordered table-striped col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			     <tr >
+				  <td data-bind="text:label" class="tdLabel"></td>
+				  <td data-bind="text:phrase" class="tdPhrase"></td>
+				 </tr>
+			   </table>
+			   </div>
+			 </div>
+			 
+			 
+			 
+			 <!--IF AUDIO-->
+			 
+			 <div data-bind="if:isAudio" class="col-lg-8 col-md-8 col-sm-10 col-xs-11 audioPost">
+			   
+			   <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 audioSub">
+			   <!--ko if:caption--><span data-bind="html:caption"></span><!--/ko-->
+			   <div data-bind="html:audioplayer" class=" audioplayer"></div>
+			   <!--ko ifnot:caption-->
+			   <span data-bind="html:artist"></span>
+			   - &nbsp;<strong><span data-bind="html:track_name"></span></strong>
+			   <!--/ko-->
+			   </div>
+			 </div>
+			 
+			 <!--IF ANSWER-->
+			 <div data-bind="if:isAnswer" class="col-lg-8 col-md-8 col-sm-10 col-xs-11 answerPost" >
+			  	<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
+                  <div class="panel panel-default">
+				    
+					<div data-bind="html:question" class="panel-body"></div>
+				    <!--ko if: answer--><div data-bind="html:answer" class="panel-footer"></div><!-- /ko -->
+                  </div>
+				</div>			
+			 </div>
+			 
+			 
+			 <!--TAGS LIST for a post-->
+			 <div class="tagsDiv col-lg-8 col-md-8 col-sm-10 col-xs-11">
+			         <p id="TagsHeader" class="col-lg-10 col-md-10 col-sm-10 col-xs-10">Tags:</p>
+			         
+					 <ul id="tagList" data-bind="foreach:tags" class="list-unstyled col-lg-8 col-md-8 col-sm-10 col-xs-10">
+			             <li><button class="pills btn btn-rose tagsPills" data-bind="click:$root.goOneMyTrend">#<span data-bind="text:$data"></span></button>&nbsp;</li>			  
+			         </ul>
+			 </div>
+			  
+			  
+		   </li><!--end of Post-->
+		      <br/>
+			  <br/>
+			  <br/>
+			  
+		  </ul>
+		  </div>
+		
+		
+		 
+		 <div id="bottom"><img src="img/ajax-loader3.gif"/></div><!--marker for scrollspy--> 
+		</div>
+		
+		
+		
+		<!--LOGIN MAIN SCREEN-->
+		<div id='appViewTrackTrend' data-bind="if:loginHomeScreen" class="row">
+          <div class="container" id="mainLoginForm">
+		      <span data-bind="text:needLoginMsg"></span>
+		       <br/>
+			   <br/>
+		  
+		     <form id='loginForm'>
+                <button data-bind='click:$root.goLoginScreen,disable:yesSession' class="btn loginBtn">Log In</button>	        
+	            <button data-bind='click:$root.goRegisterScreen' class="btn regBtn">Register</button>
+	          </form>
+		  
+		      <br/>
+		   
+		      <a class="forgotLink text-primary" href="#"data-bind='click:$root.goPasswordScreen'>Forgot your password or username?</a>	 
+          </div>
+		</div>
+		
+		
+		
+		<!--LOGIN SCREEN-->
+		<div id="loginScreen" data-bind="if:loginScreen" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    
+			<div class="container" id="loginFormDiv">
+			      <h3>Login</h3>
+				  
+			      <br/>
+			      
+				  
+				  <form id="loginForm">
+			
+			         <label>Username:</label><br/>
+			         <input type="text" name="username" id="loginUsername" autofocus/> <br/>
+			  			  
+			         <label>Password:</label><br/>
+			         <input type="password" name="password" id="loginPassword"/><br/>
+			         <label class="errorMsg" id='loginMsg'></label><br/>
+			  
+			         <input type="submit" class="btn loginBtn" value="Log In"/>
+			      </form>
+				  
+			      <a class="forgotLink" href="#"data-bind='click:$root.goPasswordScreen'>Forgot your password or username?</a>
+			</div>			
+			
+		</div>
+		
+		
+		
+		
+		<!--REGISTER SCREEN-->
+		<div id="registerScreen" data-bind="if:registerScreen" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		    <div id="registerFormDiv" class="container">
+                   <h3>Register</h3>
+				   
+			       <br/>
+				   
+				   
+			      <form id="registerForm">
+			        <label>Username:</label><br/>
+			        <input type="text" name="username" id="username" autofocus /> <br/>
+			        <label class="errorMsg"></label><br/>
+			  
+			        <label>Email:</label><br/>
+			        <input type="email" name="email" id="email" /> <br/>
+			        <label class="errorMsg"></label><br/>
+			  
+			        <label>Password:</label><br/>
+			        <input type="password" name="password" id="password1"/><br/>
+			        <label class="errorMsg"></label><br/>
+			  
+			        <label>Re-type Password:</label><br/>
+			        <input type="password" name="password2" id="password2"/><br/>
+			        <label class="errorMsg"></label><br/>
+			  
+			        <input type="submit" class="btn regBtn" value="Register"/>
+			      </form>
+			
+			 <label id="registrationMsg"></label><br/>
+			 
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<!--PASSWORD RECOVERY SCREEN-->
+		<div id="passwordScreen" data-bind="if:passwordScreen" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		     
+			<div id="forgotFormDiv" class="container">
+			   <label>What did you forget?</label><br/>
+			    <label class="smaller"><span>*</span>If you forgot both your username and password, you have to re-register with new credentials</label><br/>
+			   <br/>
+			   <input type="radio" name="forgot" id="forgotUsername" value="username" data-bind="checked:passwordFormOption" class="ignore" />Username
+			   <input type="radio" name="forgot" value="password" id="forgotPassword" data-bind="checked:passwordFormOption" class="ignore" />Password
+			   <br/>
+			   <br/>
+			  
+			   
+			   <form id="noUsername" data-bind="if:passwordFormOption2">
+			   <label>Fill out the fields below, and your username will be emailed to you</label><br/>
+			   <label>Your email:</label><br/>
+			   <input type="email" name="email" id="passEmail" autofocus/><br/>
+			   
+			   <label>Your password:</label><br/>
+			   <input type="password" name="password" id="passPass"/><br/>
+			   <label class="errorMsg"></label><br/>
+			   <input type="submit" class="btn" value="Submit"/>
+			   </form>
+			   <label id="noUsernameMsg"></label><br/>
+			   
+			   
+			   
+			   <form id="noPassword" data-bind="ifnot:passwordFormOption2">
+			   <label>Fill out the fields below, and your password will be emailed to you</label><br/>
+			   <label>Your username:</label><br/>
+			   <input type="text" name="username" id="passUsername" autofocus /><br/>
+			   
+			   <label>Your email:</label><br/>
+			   <input type="email" name="email2" id="passEmail2" /><br/>
+			   <label class="errorMsg"></label><br/>
+			   <input type="submit" class="btn submitBtn" value="Submit"/>
+			   </form>
+			   <label id="noPasswordMsg"></label><br/>
+			   
+			   
+			   
+			</div>
+		</div>
+		
+		<!--MY TAGS SCREEN-->
+		<div id="tagsScreen" data-bind="if:myTagsScreen" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		  <div  id="myTagsDiv">
+		      <h3 class="">Hashtags you are tracking:</h3>
+		     <span id="tagsMsg"></span>
+		     <table data-bind="foreach:sortedHashes" id="myTagsTable"> 	  
+		       <tr>
+		          <td class="">
+		            <a href="#" data-bind="attr:{id:$data},click:$root.goOneMyTrend">
+		            <span data-bind="text:$data" ></span>
+		            </a>
+		          </td>
+		          
+				  <td class='rightTd'>
+		            <button class="stopTracking btn btn-rose" data-bind="click:$root.stopTracking">Stop tracking</button>
+                  </td>
+		       </tr>	 
+		     </table>
+		</div>
+		</div>
+		
+		
+		
+		</div>	<!--end of appViews-->
+		
+		<footer>
+	       &copy; TagStalk 2014 <br/>
+	              by <a class="footerLink" href="http://www.ogeinitz.com" target="new">Olli Siamese</a>
+	    </footer>
+		
+		
+		</div><!--end of container-->
+    
+	 
+	</div>	<!--end of appContainer-->
+	
+	
+	
+	
+	
+	
+	
+	
+         <!--Start the Application-->
+        <script>
+		
+		var myApp=new mainNameSpace.HistoryRouter(); <!--call the routing logic which will initiate-->
+                                                	  <!--the view model with its bindings->
+													  <!--also, gain access to its navigation methods-->
+		
+		
+		
+		
+		</script>
+		
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
