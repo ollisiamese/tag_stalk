@@ -413,7 +413,7 @@
             });
             self.posts(mappedPosts);
             var arrlength = self.posts().length;
-            self.lastTimestamp(self.posts()[arrlength-1].timestamp);
+            self.lastTimestamp(self.posts()[arrlength - 1].timestamp);
             //after the first 10 posts of the page are loaded and the last one's timestamp
             //is available for use, we can start spying on the scroll
             self.spyScroll();       
@@ -441,13 +441,15 @@
         dataType: "jsonp",
         success: function(data) {
           var finalData = data.response;
-          var moreMappedPosts = $.map(finalData, function(item) { return new somenamespace.Post(item) });
+          var moreMappedPosts = $.map(finalData, function(item) {
+            return new somenamespace.Post(item);
+          });
           
           self.posts(self.posts().concat(moreMappedPosts));
           var arrlength = moreMappedPosts.length;
        
           if (arrlength == 0 || moreMappedPosts == undefined) {
-            $('#bottom img').css({'display':'none'});
+            $('#bottom img').css({'display': 'none'});
           } else {
             var newTimeStamp = moreMappedPosts[arrlength - 1].timestamp;
             self.lastTimestamp(newTimeStamp);
