@@ -78,7 +78,7 @@
           password: {required: "Password is required", minlength: "Password should be at least 6 characters long"},  
         },
       
-        submitHandler:er.sendUsername
+        submitHandler: er.sendUsername
 
       })
 
