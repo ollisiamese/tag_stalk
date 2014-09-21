@@ -94,7 +94,7 @@
         sessionStorage['sessionUser'] = sessionUser;
         self.userName(sessionStorage['sessionUser']);    
       } else {
-        document.cookie = "sessionUser = " + sessionUser;
+        document.cookie = "sessionUser=" + sessionUser;
         self.userName(getCookie('sessionUser'));
       }
    
@@ -167,12 +167,12 @@
         var user;
         
         //if we're using sessionStorage
-        if (typeof(Storage) !== "undefined"){
+        if (typeof(Storage) !== "undefined") {
           self.userName(sessionStorage['sessionUser']);
           return user = sessionStorage['sessionUser'];
         } else {
           self.userName(getCookie('sessionUser'));  
-          return user=self.getCookie('sessionUser');
+          return user = self.getCookie('sessionUser');
         }
 
       } else {
@@ -374,7 +374,7 @@
         var hash = self.selectedTag().toLowerCase();
       } else {
         //if we're stopping tracking from mytags page
-        var hash=this.toLowerCase(); 
+        var hash = this.toLowerCase(); 
       }
 
       $.ajax({
@@ -408,7 +408,9 @@
           if (data.response != "" && data.response != null && data.response != undefined) {
             self.noPostsFound(false);
             var finalData = data.response;
-            var mappedPosts = $.map(finalData, function(item) { return new somenamespace.Post(item) });
+            var mappedPosts = $.map(finalData, function(item) {
+              return new somenamespace.Post(item);
+            });
             self.posts(mappedPosts);
             var arrlength = self.posts().length;
             self.lastTimestamp(self.posts()[arrlength-1].timestamp);
