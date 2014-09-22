@@ -1,5 +1,6 @@
 (function(somenamespace) {
-
+  'use strict';
+  
   function Post(data) {
     var self = this;
     self.blog_name = data.blog_name;
@@ -30,8 +31,7 @@
         self.caption = data.photos.caption;
       } else {
         self.caption = "";
-      }
-  
+      }  
     }
 
 
@@ -46,8 +46,7 @@
         self.videos = data.player[2].embed_code;
       } else {
         self.videos = "h";
-      } 
-    
+      }     
     }
 
 
@@ -93,8 +92,7 @@
         self.track_name = data.track_name;
       } else {
         self.track_name = " ";
-      }
-   
+      }   
     }
 
     //TEXT
@@ -108,8 +106,7 @@
         self.body = data.body;
       } else {
         self.body = null;
-      }
-      
+      }      
     }
 
     //QUOTE
@@ -132,8 +129,7 @@
       }
       
       self.body = data.body;
-      self.dialogue = data.dialogue;
- 
+      self.dialogue = data.dialogue; 
     }
 
     //ANSWER
@@ -143,11 +139,9 @@
       self.question = data.question;
       self.answer = data.aswer;
     }
-
   }
 
   //get public access
   somenamespace.Post = Post; 
-
 
 })(window.mainNameSpace = window.mainNameSpace || {});

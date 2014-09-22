@@ -1,5 +1,6 @@
 //start up the whole app 
 (function(somenamespace) {
+  'use strict';
   
   function App() {
     this.run = function() {

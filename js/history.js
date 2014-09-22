@@ -1,4 +1,6 @@
 (function(somenamespace) {
+  'use strict';
+  
   //a scope to define all the screen routes navigation
   function HistoryRouter() { 
     //start the view model and apply its bindings
@@ -12,10 +14,8 @@
       this.element_selector = '#appContainer';   
       
       //HOME (track trend) route
-      this.get('#/trackTrend', function(context) {
-        
-        er.homeScreen(true);
-        //to set er.yesSession() and the list of hashtags
+      this.get('#/trackTrend', function(context) {        
+        er.homeScreen(true);        
         er.checkForSession(); 
         er.loginHomeScreen(false);
         er.loginScreen(false);
@@ -25,15 +25,12 @@
         er.myTagsScreen(false);
         fv.vaTrackTrendForm();
         fv.vaTrackTrendForm2();
-        er.posts(null);
-
-      //end of the HOME routeEvents
+        er.posts(null);      
       }); 
     
       
       //LOG IN MAIN route
-      this.get('#/loginMain', function(context) {
-        
+      this.get('#/loginMain', function(context) {        
         er.homeScreen(false);
         er.loginHomeScreen(true);
         er.loginScreen(false);
@@ -43,15 +40,12 @@
         er.myTagsScreen(false);
         fv.vaTrackTrendForm();
         fv.vaTrackTrendForm2();
-        er.posts(null);
-
-      //end of the LOG IN MAIN routeEvents
+        er.posts(null);      
       }); 
     
       
       //LOG IN FORM route
-      this.get('#/loginForm', function(context) {
-        
+      this.get('#/loginForm', function(context) {        
         er.homeScreen(false);
         er.loginHomeScreen(false);
         er.loginScreen(true);
@@ -62,9 +56,7 @@
         fv.vaTrackTrendForm();
         fv.vaTrackTrendForm2();
         fv.vaLogIn();
-        er.posts(null);
-       
-      //end of the LOG IN FORM routeEvents
+        er.posts(null);             
       }); 
     
       
@@ -80,9 +72,7 @@
         fv.vaTrackTrendForm();
         fv.vaTrackTrendForm2();
         fv.vaRegister();
-        er.posts(null);
-       
-      //end of the REGISTER FORM routeEvents
+        er.posts(null);             
       }); 
     
       //PASSWORD FORM route
@@ -99,9 +89,7 @@
         er.passwordFormOption("username");       
         fv.vaPassword1();       
         fv.vaPassword2();
-        er.posts(null);
-       
-      //end of the PASSWORD FORM route
+        er.posts(null);             
       }); 
     
     
@@ -122,14 +110,11 @@
         $('#LoadingMsg').css({'display' : 'block'});            
         er.getTagPosts();       
         er.scrollToTop();
-        er.checkTagStatus();
-    
-      //end of the ONE TREND route
+        er.checkTagStatus();          
       }); 
     
       //MY TAGS route
-      this.get('#/myTags', function(context) {
-      
+      this.get('#/myTags', function(context) {      
         //this screen is only available to logged in users
         er.checkForSessionAndTags();
         
@@ -144,26 +129,20 @@
           fv.vaTrackTrendForm();
           fv.vaTrackTrendForm2();
           er.posts(null);
-          window.scroll(0, 30);
-        
+          window.scroll(0, 30);        
         } else {
           er.needLoginMsg("You need to be logged in to access your Hashtags");
           er.goLoginMain();
-        }
-       
-      //end of the LOG MY TAGS route 
-      }); 
-    
+        }             
+      });     
     //end of Sammy
     }) 
-   
- 
+    
     //call the home screen by default
     self.navigation.run('#/trackTrend');
   }
   
   //get public access
   somenamespace.HistoryRouter = HistoryRouter; 
-
 
 })(window.mainNameSpace = window.mainNameSpace || {});
