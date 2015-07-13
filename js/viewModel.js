@@ -134,7 +134,7 @@
 					//do nothing
 					console.log("ajax error in sessionStart");
 				}
-			})
+			});
 		};
 
 		//STOP SESSION
@@ -207,7 +207,7 @@
 					error: function() {
 						console.log('ajax error in checkForSessionAndTags');
 					}
-				})        
+				});        
 			} else {
 				//we are not logged in
 				return false; 
@@ -240,7 +240,7 @@
 				error: function() {
 					console.log('ajax error in processRegistration');
 				}
-			})
+			});
 		};
 
 		//sendUsername
@@ -262,7 +262,7 @@
 				error: function() {
 					console.log('ajax error in sendUsername');
 				}
-			})    
+			});   
 		};
 
 		//sendPassword
@@ -284,7 +284,7 @@
 				error:function() {
 					console.log('ajax error in sendPassword');
 				}
-			})
+			});
 		};
 
 		//reload screen
@@ -313,7 +313,7 @@
 					error: function() {
 						console.log('ajax error in checkTagStatus');
 					}
-				})        
+				});        
 			}
 		};
 
@@ -347,7 +347,7 @@
 						error: function() {
 							console.log('ajax error in trackTag');
 						}   
-					})        
+					});        
 				} else { 
 					self.goLoginMain();
 					self.needLoginMsg("You need to be logged in to track permanently");
@@ -384,7 +384,7 @@
 				error: function() {
 					console.log('ajax error in stopTracking');
 				}
-			})
+			});
 		};
 
 		//GET TAGS POSTS (THE LATEST 10)
