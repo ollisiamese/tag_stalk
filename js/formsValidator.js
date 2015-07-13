@@ -24,7 +24,7 @@
 					}
 				},  
 				submitHandler: er.startSession
-			})
+			});
 		};
 
 		self.vaRegister = function() {
@@ -97,7 +97,7 @@
 					}
 				},  
 				submitHandler: er.processRegistration
-			})
+			});
 		};
 
 		//validating the Password form - no username
@@ -125,7 +125,7 @@
 					},  
 				},      
 				submitHandler: er.sendUsername
-			})
+			});
 		};
 
 		//validating the Password form - no password
@@ -151,7 +151,7 @@
 					}
 				},  
 				submitHandler: er.sendPassword
-			})
+			});
 		};
 
 		self.vaTrackTrendForm = function() {    
@@ -163,7 +163,7 @@
 					trackInput: ''
 				},
 				submitHandler: er.goOneTrend 
-			})
+			});
 		};
 
 		self.vaTrackTrendForm2 = function() {    
@@ -175,7 +175,7 @@
 					trackInput2: ''
 				},
 				submitHandler: er.goOneTrend2 
-			})
+			});
 		};
 	}
 
